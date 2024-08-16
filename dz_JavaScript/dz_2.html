@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dz_2.css">
+</head>
+
+<body>
+    <div class="active" id="z1">
+        <fieldset>
+            <h2> Задание 1</h2>
+            <b>
+                <p style="font-size: 15px;">Подсчитать сумму всех чисел в заданном пользователем диапазоне</p>
+            </b>
+            Ведите деапазон: от <input id="start" placeholder="1" type="number"> до <input type="number" id="end"
+                placeholder="999"><br><br>
+            <button onclick="SUM()">Вычеслить сумму</button>
+            <p id="result"></p>
+            <button class="hidden button2" id="pro"> Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z2">
+        <fieldset>
+            <h2> Задание 2</h2>
+            <b>
+                <p style="font-size: 15px;">Запросить 2 числа и найти только наибольший общий делитель</p>
+            </b>
+            Введите 2 числа:<br>
+            <input type="number" placeholder="1" id="s1"><br>
+            <input type="number" placeholder="10" id="s2"><br>
+            Найти наибольший общий делитель<br>
+            <button onclick="Search()">Найти</button>
+            <p id="result2"></p>
+            <button id="pro2_1" class="hidden button">Назад</button>
+            <button id="pro2_2" class="hidden button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z3">
+        <fieldset>
+            <h2>Задание 3</h2>
+            <b>
+                <p style="font-size: 15px;">Запросить у пользователя число и вывести все делители этого числа</p>
+            </b>
+            Введите число:<input type="number" placeholder="1" id="num"><br>
+            Найти все делители этого числа:<br>
+            <button onclick="SearchDel()">Найти</button>
+            <p id="result3"></p>
+            <button id="pro3_1" class="hidden button">Назад</button>
+            <button id="pro3_2" class="hidden button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z4">
+        <fieldset>
+            <h2>Задание 4</h2>
+            <b>
+                <p style="font-size: 15px;">Определить количество цифр в введенном числе</p>
+            </b>
+            Введите число:<input type="number" placeholder="1" id="num2"><br>
+            Определить количество цифр в числе<br>
+            <button onclick="SearchCol()">Определить</button>
+            <p id="result4"></p>
+            <button id="pro4_1" class="hidden button">Назад</button>
+            <button id="pro4_2" class="hidden button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z5">
+        <fieldset>
+            <h2>Задание 5</h2>
+            <b>
+                <p style="font-size: 15px;">Запросить у пользователя 10 чисел и подсчитать, сколько он ввел
+                    положительных, отрицательных и нулей. При этомтакже посчитать,
+                    сколько четных и нечетных. Вывести статистику на экран. Учтите, что достаточно одной переменной (не
+                    10) для ввода чисел пользователем.</p>
+            </b>
+            <h4>Введите 10 чисел:</h4>
+            <input size="80px" type="text" id="numbers" placeholder="Введите числа через пробел"><br>
+            <button onclick="AnalyzeNumbers()">Анализ</button>
+            <p id="result5"></p>
+            <button id="pro5_1" class="hidden button">Назад</button>
+            <button id="pro5_2" class="hidden button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z6">
+        <h2>Задание 6</h2>
+        <fieldset class="main_window">
+            <div class="calculator-display" id="display" style="background-color: black;color: wheat;"></div>
+            <div class="calculator-buttons">
+                <button class="operator-button calculator-button" onclick="appendOperator('+')">+</button>
+                <button class="operator-button calculator-button"></button>
+                <button class="operator-button calculator-button" onclick="appendOperator('c')">C</button>
+                <button class="operator-button calculator-button" onclick="appendOperator('<')">
+                    < </button>
+                        <button class="calculator-button" onclick="appendNumber('7')">7</button>
+                        <button class="calculator-button" onclick="appendNumber('8')">8</button>
+                        <button class="calculator-button" onclick="appendNumber('9')">9</button>
+                        <button class="operator-button calculator-button" onclick="appendOperator('/')">/</button>
+
+                        <button class="calculator-button" onclick="appendNumber('4')">4</button>
+                        <button class="calculator-button" onclick="appendNumber('5')">5</button>
+                        <button class="calculator-button" onclick="appendNumber('6')">6</button>
+                        <button class="operator-button calculator-button" onclick="appendOperator('*')">X</button>
+
+                        <button class="calculator-button" onclick="appendNumber('1')">1</button>
+                        <button class="calculator-button" onclick="appendNumber('2')">2</button>
+                        <button class="calculator-button" onclick="appendNumber('3')">3</button>
+                        <button class="operator-button calculator-button" onclick="appendOperator('-')">-</button>
+
+                        <button class="calculator-button"></button>
+                        <button class="calculator-button">0</button>
+                        <button class="calculator-button"></button>
+                        <button class="operator-buttons calculator-button" onclick="appendOperator('=')">=</button>
+                        <button id="pro6_1" class="hidden button">Назад</button>
+                        <button id="pro6_2" class="hidden button3">Продолжить</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z7">
+        <fieldset>
+            <h2>Задание 7</h2>
+            <b>
+                <p style="font-size: 15px;">Запросить у пользователя число и на сколько цифр его сдвинуть. Сдвинуть
+                    цифры
+                    числа и вывести результат (если число 123456 сдвинуть на 2 цифры, то получится 345612).</p>
+            </b>
+            Введите число: <input type="number" placeholder="1" id="cifra"><br>
+            и насколько цыфр его сдвинуть: <input type="number" placeholder="1" id="shift"><br>
+            <button onclick="Transfer()">Результат</button>
+            <p id="result7"></p>
+            <button id="pro7_1" class="hidden button">Назад</button>
+            <button id="pro7_2" class="hidden button3">Продолжить</button>
+
+        </fieldset>
+    </div>
+    <div class="hidden" id="z8">
+        <fieldset>
+            <h2 style="text-align: center;">Задание 8</h2>
+            <b>
+                <p style="font-size: 15px;">Зациклить вывод дней недели таким образом: «День недели.
+                    Хотите увидеть следующий день?» и так до тех пор, пока
+                    пользователь нажимает OK.</p>
+            </b>
+            <div id="days">
+                <div class="day" data-day="Понедельник">Понедельник</div>
+                <div class="day" data-day="Вторник">Вторник</div>
+                <div class="day" data-day="Среда">Среда</div>
+                <div class="day" data-day="Четверг">Четверг</div>
+                <div class="day" data-day="Пятница">Пятница</div>
+                <div class="day" data-day="Суббота">Суббота</div>
+                <div class="day" data-day="Воскресенье">Воскресенье</div>
+            </div>
+            <button class="button2" id="OK" onclick="showNextDay()">OK</button>
+            <button class="button3" id="exit" onclick="Exittt()">Exit</button>
+            <button id="pro8_1" class="hidden button">Назад</button>
+            <button id="pro8_2" class="hidden button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z9">
+        <fieldset>
+            <h2>Задание 9</h2>
+            <b>
+                <p style="font-size: 15px;">Вывести таблицу умножения для всех чисел от 2 до 9.
+                    Каждое число необходимо умножить на числа от 1 до 10.</p>
+            </b>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>2*1=2<br>2*2=4<br>2*3=6<br>2*4=8<br>2*5=10<br>2*6=12<br>2*7=14<br>2*8=16<br>2*9=18<br>2*10=20
+                        </td>
+                        <td>3*1=3<br>3*2=6<br>3*3=9<br>3*4=12<br>3*5=15<br>3*6=18<br>3*7=21<br>3*8=24<br>3*9=27<br>3*10=30
+                        </td>
+                        <td>4*1=4<br>4*2=8<br>4*3=12<br>4*4=16<br>4*5=20<br>4*6=24<br>4*7=28<br>4*8=32<br>4*9=36<br>4*10=40
+                        </td>
+                        <td>5*1=5<br>5*2=10<br>5*3=15<br>5*4=20<br>5*5=25<br>5*6=30<br>5*7=35<br>5*8=40<br>5*9=45<br>5*10=50
+                        </td>
+                        <td>6*1=6<br>6*2=12<br>6*3=18<br>6*4=24<br>6*5=30<br>6*6=36<br>6*7=42<br>6*8=48<br>6*9=54<br>6*10=60
+                        </td>
+                        <td>7*1=7<br>7*2=14<br>7*3=21<br>7*4=28<br>7*5=35<br>7*6=42<br>7*7=49<br>7*8=56<br>7*9=63<br>7*10=70
+                        </td>
+                        <td>8*1=8<br>8*2=16<br>8*3=24<br>8*4=32<br>8*5=40<br>8*6=48<br>8*7=56<br>8*8=64<br>8*9=72<br>8*10=80
+                        </td>
+                        <td>9*1=9<br>9*2=18<br>9*3=27<br>9*4=36<br>9*5=45<br>9*6=54<br>9*7=63<br>9*8=72<br>9*9=81<br>9*10=90
+                        </td>
+                        <td>10*1=10<br>10*2=20<br>10*3=30<br>10*4=40<br>10*5=50<br>10*6=60<br>10*7=70<br>10*8=80<br>10*9=90<br>10*10=100
+                        </td>
+                    </tr>
+                </tbody>
+            </table><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>2</th>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>12</td>
+                        <td>14</td>
+                        <td>16</td>
+                        <td>18</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>9</td>
+                        <td>12</td>
+                        <td>15</td>
+                        <td>18</td>
+                        <td>21</td>
+                        <td>24</td>
+                        <td>27</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>4</td>
+                        <td>8</td>
+                        <td>12</td>
+                        <td>16</td>
+                        <td>20</td>
+                        <td>24</td>
+                        <td>28</td>
+                        <td>32</td>
+                        <td>36</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>15</td>
+                        <td>20</td>
+                        <td>25</td>
+                        <td>30</td>
+                        <td>35</td>
+                        <td>40</td>
+                        <td>45</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td>6</td>
+                        <td>12</td>
+                        <td>18</td>
+                        <td>24</td>
+                        <td>30</td>
+                        <td>36</td>
+                        <td>42</td>
+                        <td>48</td>
+                        <td>54</td>
+                        <td>60</td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td>7</td>
+                        <td>14</td>
+                        <td>21</td>
+                        <td>28</td>
+                        <td>35</td>
+                        <td>42</td>
+                        <td>49</td>
+                        <td>56</td>
+                        <td>63</td>
+                        <td>70</td>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <td>8</td>
+                        <td>16</td>
+                        <td>24</td>
+                        <td>32</td>
+                        <td>40</td>
+                        <td>48</td>
+                        <td>56</td>
+                        <td>64</td>
+                        <td>72</td>
+                        <td>80</td>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <td>9</td>
+                        <td>18</td>
+                        <td>27</td>
+                        <td>36</td>
+                        <td>45</td>
+                        <td>54</td>
+                        <td>63</td>
+                        <td>72</td>
+                        <td>81</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <th>10</th>
+                        <td>10</td>
+                        <td>20</td>
+                        <td>30</td>
+                        <td>40</td>
+                        <td>50</td>
+                        <td>60</td>
+                        <td>70</td>
+                        <td>80</td>
+                        <td>90</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table><br>
+            <button id="pro9_1" class="active button">Назад</button>
+            <button id="pro9_2" class="active button3">Продолжить</button>
+        </fieldset>
+    </div>
+    <div class="hidden" id="z10">
+        <fieldset>
+            <h2>Задание 10</h2>
+            <h1>Угадай число!</h1>
+            <p id="us" class="active">Загадайте число от 0 до 100. Я попробую угадать.</p>
+            <p id="question"></p>
+            <button style="font-size: 20px;" onclick="checkNumber('>')">Больше</button>
+            <button style="font-size: 20px;" onclick="checkNumber('<')">Меньше</button>
+            <button style="font-size: 20px;" onclick="checkNumber('==')">Равно</button>
+            <button id="pro10" class="hidden button">Назад</button>
+        </fieldset>
+    </div>
+</body>
+<script>
+    const Z1 = document.getElementById('z1');
+    const Z2 = document.getElementById('z2');
+    const Z3 = document.getElementById('z3');
+    const Z4 = document.getElementById('z4');
+    const Z5 = document.getElementById('z5');
+    const Z6 = document.getElementById('z6');
+    const Z7 = document.getElementById('z7');
+    const Z8 = document.getElementById('z8');
+    const Z9 = document.getElementById('z9');
+    const Z10 = document.getElementById('z10');
+    const Pro = document.getElementById('pro');
+    const Pro2_1 = document.getElementById('pro2_1');
+    const Pro2_2 = document.getElementById('pro2_2');
+    const Pro3_1 = document.getElementById('pro3_1');
+    const Pro3_2 = document.getElementById('pro3_2');
+    const Pro4_1 = document.getElementById('pro4_1');
+    const Pro4_2 = document.getElementById('pro4_2');
+    const Pro5_1 = document.getElementById('pro5_1');
+    const Pro5_2 = document.getElementById('pro5_2');
+    const Pro6_1 = document.getElementById('pro6_1');
+    const Pro6_2 = document.getElementById('pro6_2');
+    const Pro7_1 = document.getElementById('pro7_1');
+    const Pro7_2 = document.getElementById('pro7_2');
+    const Pro8_1 = document.getElementById('pro8_1');
+    const Exit = document.getElementById('exit');
+    const Pro8_2 = document.getElementById('pro8_2');
+    const Pro9_1 = document.getElementById('pro9_1');
+    const Pro9_2 = document.getElementById('pro9_2');
+    const Pro10 = document.getElementById('pro10');
+    function SUM() {
+        let Start = parseInt(document.getElementById('start').value);
+        let End = parseInt(document.getElementById('end').value);
+        let Sum = 0;
+        if (Start < End) {
+            for (let i = Start; i <= End; i++) {
+                Sum += i;
+            }
+            document.getElementById("result").textContent = "Сумма чисел диапазона от " + Start + " до " + End + " равна: " + Sum;
+            Pro.style.display = 'block';
+        }
+        else if (Start == End) {
+            ocument.getElementById("result").textContent = "Сумма чисел диапазона от " + Start + " до " + End + " равна: " + 0;
+            Pro.style.display = 'block';
+        }
+        else {
+            [Start, End] = [End, Start];
+            for (let i = Start; i <= End; i++) {
+                Sum += i;
+            }
+            document.getElementById("result").textContent = "Сумма чисел диапазона от " + Start + " до " + End + " равна: " + Sum;
+            Pro.style.display = 'block';
+        }
+    }
+    function Search() {
+        let S1 = parseInt(document.getElementById("s1").value);
+        let S2 = parseInt(document.getElementById("s2").value);
+        while (S2 != 0) {
+            let temp = S2;
+            S2 = S1 % S2;
+            S1 = temp;
+        }
+        document.getElementById("result2").textContent = "Наибольший общий делитель: " + S1;
+        Pro2_1.style.display = 'block'; Pro2_2.style.display = 'block';
+    }
+    function SearchDel() {
+        let Num = parseInt(document.getElementById("num").value);
+        let Pus = [];
+        for (let i = 1; i <= Num; i++) {
+            if (Num % i == 0) {
+                Pus.push(i);
+            }
+        }
+        document.getElementById("result3").textContent = Num + " делится на: " + Pus.join(", ");
+        Pro3_1.style.display = 'block'; Pro3_2.style.display = 'block';
+    }
+    function SearchCol() {
+        let Num2 = document.getElementById("num2").value;
+        let Num2_S = Num2.toString();
+        document.getElementById("result4").textContent = "Количество цыфр: " + Num2_S.length;
+        Pro4_1.style.display = 'block'; Pro4_2.style.display = 'block';
+    }
+    function AnalyzeNumbers() {
+        let NumbersString = document.getElementById("numbers").value;
+        let NumbersArray = NumbersString.split(' ').map(Number);
+        if (NumbersArray.length !== 10) {
+            document.getElementById("result5").innerHTML = "Вы должны ввести 10 чисел!";
+            return;
+        }
+        let positiveCount = 0;
+        let negativeCount = 0;
+        let zeroCount = 0;
+        let evenCount = 0;
+        let oddCount = 0;
+        for (let i = 0; i < NumbersArray.length; i++) {
+            if (NumbersArray[i] > 0) {
+                positiveCount++;
+            } else if (NumbersArray[i] < 0) {
+                negativeCount++;
+            } else {
+                zeroCount++;
+            }
+            if (NumbersArray[i] % 2 === 0) {
+                evenCount++;
+            } else {
+                oddCount++;
+            }
+        }
+        document.getElementById("result5").innerHTML = `
+        <p>Положительных чисел: ${positiveCount}</p>
+        <p>Отрицательных чисел: ${negativeCount}</p>
+        <p>Нулей: ${zeroCount}</p>
+        <p>Четных чисел: ${evenCount}</p>
+        <p>Нечетных чисел: ${oddCount}</p>`;
+        Pro5_1.style.display = 'block'; Pro5_2.style.display = 'block';
+    }
+    //////задание 6////////////////////
+    let display = document.getElementById("display");
+    let currentInput = "";
+    function appendNumber(number) {
+        currentInput += number;
+        display.textContent = currentInput;
+    }
+    function appendOperator(operator) {
+        if (operator === '=') {
+            try {
+                currentInput = eval(currentInput).toString();
+                display.textContent = currentInput;
+            } catch (error) {
+                display.textContent = "????";
+            }
+            Pro6_1.style.display = 'block'; Pro6_2.style.display = 'block';
+        } else if (operator === 'c') {
+            currentInput = "";
+            display.textContent = currentInput;
+        } else if (operator === '<') {
+            currentInput = currentInput.slice(0, -1);
+            display.textContent = currentInput;
+        } else {
+            currentInput += operator;
+            display.textContent = currentInput;
+        }
+    }
+    ////////////////////////I------
+    function Transfer() {
+        let Cifra = document.getElementById("cifra").value;
+        let Shift = parseInt(document.getElementById("shift").value);
+        let str = Cifra.toString();
+        if (Shift < 0) {
+            Shift = str.length + Shift;
+        }
+        let shiftedStr = str.substring(Shift) + str.substring(0, Shift);
+        document.getElementById("result7").textContent = `Результат: ${shiftedStr}`;
+        Pro7_1.style.display = 'block'; Pro7_2.style.display = 'block';
+    }
+    ///////задание 8///////////
+    const days = document.querySelectorAll('.day');
+    const today = new Date().getDay() - 1;
+    const currentDay = days[today];
+    currentDay.classList.add('current');
+    let currentIndex = today;
+    function showNextDay() {
+        Exit.style.display = 'block';
+        Pro8_1.style.display = 'none'; Pro8_2.style.display = 'none';
+        // Снимаем подсветку с предыдущего дня
+        days[currentIndex].classList.remove('current');
+        // Переходим к следующему дню
+        currentIndex = (currentIndex + 1) % 7;
+        // Подсвечиваем текущий день
+        days[currentIndex].classList.add('current');
+    }
+    function Exittt() {
+        Pro8_1.style.display = 'block'; Pro8_2.style.display = 'block';
+        Exit.style.display = 'none';
+    }
+    ////////////////
+
+    ////////////задание 10/////////
+    const Us = document.getElementById("us")
+    let min = 0;
+    let max = 100;
+    let n = Math.floor((min + max) / 2);
+    document.getElementById("question").textContent = `Ваше число > ${n}, < ${n} или == ${n}?`;
+    function checkNumber(operator) {
+        Us.style.display = 'none';
+        if (operator == '>') {
+            min = n + 1;
+        }
+        else if (operator == '<') {
+            max = n - 1;
+        }
+        else if (operator == '==') {
+            Pro10.style.display = 'block';
+            document.getElementById("question").textContent = `Я угадал! Загаданное число было - ${n}`;
+            return;
+        }
+        n = Math.floor((min + max) / 2);
+        document.getElementById("question").textContent = `Ваше число > ${n}, < ${n} или == ${n}?`;
+    }
+    ///////////////////////////
+    Pro.addEventListener('click', () => {
+        Z1.style.display = 'none';
+        Z2.style.display = 'block';
+        Pro.style.display = 'none';
+    });
+    Pro2_1.addEventListener('click', () => {
+        Z2.style.display = 'none';
+        Z1.style.display = 'block';
+        Pro2_1.style.display = 'none';
+        Pro2_2.style.display = 'none';
+    });
+    Pro2_2.addEventListener('click', () => {
+        Z2.style.display = 'none';
+        Z3.style.display = 'block';
+        Pro2_1.style.display = 'none';
+        Pro2_2.style.display = 'none';
+    });
+    Pro3_1.addEventListener('click', () => {
+        Z3.style.display = 'none';
+        Z2.style.display = 'block';
+        Pro3_1.style.display = 'none';
+        Pro3_2.style.display = 'none';
+    });
+    Pro3_2.addEventListener('click', () => {
+        Z3.style.display = 'none';
+        Z4.style.display = 'block';
+        Pro3_1.style.display = 'none';
+        Pro3_2.style.display = 'none';
+    });
+    Pro4_1.addEventListener('click', () => {
+        Z4.style.display = 'none';
+        Z3.style.display = 'block';
+        Pro4_1.style.display = 'none';
+        Pro4_2.style.display = 'none';
+    });
+    Pro4_2.addEventListener('click', () => {
+        Z4.style.display = 'none';
+        Z5.style.display = 'block';
+        Pro4_1.style.display = 'none';
+        Pro4_2.style.display = 'none';
+    });
+    Pro5_1.addEventListener('click', () => {
+        Z5.style.display = 'none';
+        Z4.style.display = 'block';
+        Pro5_1.style.display = 'none';
+        Pro5_2.style.display = 'none';
+    });
+    Pro5_2.addEventListener('click', () => {
+        Z5.style.display = 'none';
+        Z6.style.display = 'block';
+        Pro5_1.style.display = 'none';
+        Pro5_2.style.display = 'none';
+    });
+    Pro6_1.addEventListener('click', () => {
+        Z6.style.display = 'none';
+        Z5.style.display = 'block';
+        Pro6_1.style.display = 'none';
+        Pro6_2.style.display = 'none';
+    });
+    Pro6_2.addEventListener('click', () => {
+        Z6.style.display = 'none';
+        Z7.style.display = 'block';
+        Pro6_1.style.display = 'none';
+        Pro6_2.style.display = 'none';
+    });
+    Pro7_1.addEventListener('click', () => {
+        Z7.style.display = 'none';
+        Z6.style.display = 'block';
+        Pro7_1.style.display = 'none';
+        Pro7_2.style.display = 'none';
+    });
+    Pro7_2.addEventListener('click', () => {
+        Z7.style.display = 'none';
+        Z8.style.display = 'block';
+        Pro7_1.style.display = 'none';
+        Pro7_2.style.display = 'none';
+    });
+    Pro8_1.addEventListener('click', () => {
+        Z8.style.display = 'none';
+        Z7.style.display = 'block';
+        Pro8_1.style.display = 'none';
+        Pro8_2.style.display = 'none';
+    });
+    Pro8_2.addEventListener('click', () => {
+        Z8.style.display = 'none';
+        Z9.style.display = 'block';
+        Pro8_1.style.display = 'none';
+        Pro8_2.style.display = 'none';
+        Pro9_1.style.display = 'block';
+        Pro9_2.style.display = 'block';
+    });
+    Pro9_1.addEventListener('click', () => {
+        Z9.style.display = 'none';
+        Z8.style.display = 'block';
+        Pro9_1.style.display = 'none';
+        Pro9_2.style.display = 'none';
+    });
+    Pro9_2.addEventListener('click', () => {
+        Z9.style.display = 'none';
+        Z10.style.display = 'block';
+        Pro9_1.style.display = 'none';
+        Pro9_2.style.display = 'none';
+    });
+    Pro10.addEventListener('click', () => {
+        Z10.style.display = 'none';
+        Z9.style.display = 'block';
+        Pro10.style.display = 'none';
+        Pro9_1.style.display = 'block';
+        Pro9_2.style.display = 'block';
+    });
+</script>
+
+</html>
