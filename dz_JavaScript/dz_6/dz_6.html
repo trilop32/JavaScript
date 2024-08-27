@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dz</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        div {
+            border: 1px solid blue;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const d1 = document.createElement('div');
+        d1.id = 'd1';
+        for (let i = 1; i <= 3; i++) {
+            const d2 = document.createElement('div');
+            d2.id = `d1${i}`;
+            for (let j = 1; j <= i; j++) {
+                const d3 = document.createElement('div');
+                d3.id = `d1${i}${j}`;
+                d3.textContent = `1${i}${j}`;
+                d2.appendChild(d3);
+            }
+            d1.appendChild(d2);
+        }
+        document.body.appendChild(d1);
+        const d132 = document.getElementById('d132');
+        d132.style.backgroundColor = 'red';
+    </script>
+    <script src="dz_6.js"></script>
+</body>
+
+</html>
