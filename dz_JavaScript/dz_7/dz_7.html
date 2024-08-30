@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .button2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body id="bod" oncontextmenu="Oncontextmenu()" onclick="Onclick()">
+    <div id="z1" class="active body">
+        Random number:<br>
+        <p id="random"></p>
+        <button onclick="RandomNumber()">Generate random number</button>
+        <button id="b1" class="button">Вперёд</button>
+    </div>
+    <div id="z2" class="hide">
+        <div id="coordinates">X= Y=</div>
+        <button id="b2" class="button2">Обратно</button>
+    </div>
+    <script src="dz_7.js"></script>
+    <script>
+        function RandomNumber() {
+            let num = [];
+            for (let i = 0; i < 1; i++) {
+                num = (Math.floor(Math.random() * 101));
+            }
+            return document.getElementById('random').textContent = num;
+        }
+        const bod = document.getElementById('bod');
+        const coordinat = document.getElementById('coordinates');
+
+        bod.addEventListener('contextmenu', function (event) {
+            event.preventDefault(); // отменяем стандартное контекстное меню
+        });
+
+        bod.addEventListener('mousemove', function (event) {
+            coordinat.textContent = `X=${event.clientX} Y=${event.clientY}`;
+        });
+        function Oncontextmenu() {
+            coordinat.textContent = `X=${event.clientX} Y=${event.clientY} (Правая кнопка)`;
+        }
+        function Onclick() {
+            coordinat.textContent = `X=${event.clientX} Y=${event.clientY} (Левая кнопка)`;
+        }
+        const B1 = document.getElementById('b1');
+        const B2 = document.getElementById('b2');
+        const Z1 = document.getElementById('z1');
+        const Z2 = document.getElementById('z2');
+        B1.addEventListener('click', () => {
+            Z1.style.display = 'none';
+            Z2.style.display = 'block';
+        })
+        B2.addEventListener('click', () => {
+            Z2.style.display = 'none';
+            Z1.style.display = 'block';
+        })
+    </script>
+</body>
+
+</html>
