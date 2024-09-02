@@ -13,6 +13,6 @@ body {
     cursor: pointer;
 }
 
-.book.selected {
+.selected {
     background-color: orange;
 }

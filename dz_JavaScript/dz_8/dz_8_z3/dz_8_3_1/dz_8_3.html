@@ -19,7 +19,7 @@
         const bookList = document.getElementById('bookList');
         bookList.addEventListener('click', (event) => {
             if (event.target.classList.contains('book')) {
-                const selectedBooks = document.querySelectorAll('.book.selected');
+                const selectedBooks = document.querySelectorAll('.selected');
                 selectedBooks.forEach(book => book.classList.remove('selected'));
                 event.target.classList.add('selected');
             }
