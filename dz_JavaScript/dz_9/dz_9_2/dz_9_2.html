@@ -5,41 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
-
-        #field {
-            width: 100vw;
-            height: 100vh;
-            background-color: green;
-            background-image: url('futbool.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #ball {
-            width: 100px;
-            height: 100px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            transition: left 0.5s ease, top 0.5s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="dz_9_2.css">
 </head>
 
 <body>
-    <div id="field">
-        <div id="ball"></div>
+    <div id="field" class="field">
+        <div id="ball" class="ball"></div>
     </div>
     <script>
         const field = document.getElementById('field');
@@ -47,8 +18,6 @@
         field.addEventListener('click', (event) => {
             const ballX = event.clientX - ball.offsetWidth / 2;
             const ballY = event.clientY - ball.offsetHeight / 2;
-
-            // Проверка границ поля
             const maxX = field.offsetWidth - ball.offsetWidth;
             const maxY = field.offsetHeight - ball.offsetHeight;
             ball.style.left = Math.max(0, Math.min(ballX, maxX)) + 'px';
