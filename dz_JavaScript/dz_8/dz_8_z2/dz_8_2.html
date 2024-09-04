@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dz_8_2.css">
+</head>
+
+<body>
+    <div class="Light">
+        <div class="light red" id="redL"></div>
+        <div class="light " id="yellowL"></div>
+        <div class="light " id="greenL"></div>
+    </div>
+
+    <button onclick="nextLight()">NEXT</button>
+
+    <script>
+        let currentLight = "red";
+
+        function nextLight() {
+            if (currentLight === "red") {
+                document.getElementById("redL").classList.remove("red");
+                document.getElementById("yellowL").classList.add("yellow");
+                currentLight = "yellow";
+            } else if (currentLight === "yellow") {
+                document.getElementById("yellowL").classList.remove("yellow");
+                document.getElementById("greenL").classList.add("green");
+                currentLight = "green";
+            } else if (currentLight === "green") {
+                document.getElementById("greenL").classList.remove("green");
+                document.getElementById("redL").classList.add("red");
+                currentLight = "red";
+            }
+        }
+    </script>
+    <script src="dz_8_2.js"></script>
+</body>
+
+</html>

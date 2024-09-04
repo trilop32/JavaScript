@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dz_8_1.css">
+</head>
+
+<body>
+    <h2>Введите ваше имя</h1>
+    <input type="text" id="userName" placeholder="Введите имя">
+
+    <script>
+        const User = document.getElementById("userName");
+        User.addEventListener("input", (event) => {
+            const gg = event.target.value;
+            const eror = gg.replace(/[0-9]/g, "");
+            event.target.value = eror;
+        });
+    </script>
+    <script src="dz_8_1.js"></script>
+</body>
+
+</html>
