@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="dz_9_2.css">
+</head>
+
+<body>
+    <div id="field" class="field">
+        <div id="ball" class="ball"></div>
+    </div>
+    <script>
+        const field = document.getElementById('field');
+        const ball = document.getElementById('ball');
+        field.addEventListener('click', (event) => {
+            const ballX = event.clientX - ball.offsetWidth / 2;
+            const ballY = event.clientY - ball.offsetHeight / 2;
+            const maxX = field.offsetWidth - ball.offsetWidth;
+            const maxY = field.offsetHeight - ball.offsetHeight;
+            ball.style.left = Math.max(0, Math.min(ballX, maxX)) + 'px';
+            ball.style.top = Math.max(0, Math.min(ballY, maxY)) + 'px';
+        });
+    </script>
+    <script src="dz_9_2.js"></script>
+</body>
+
+</html>
