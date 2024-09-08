@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#username").on("input", function () {
+                let gg = $(this).val();
+                let eror = gg.replace(/[0-9]/g, '');
+                $(this).val(eror);
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="dz_10.css">
+</head>
+
+<body>
+    <p>Задание: Создать html-страницу для ввода имени пользователя.<br>
+        Необходимо проверять каждый символ, который вводит пользователь.<br>
+        Если он ввел цифру, то не отображать ее в input.</p>
+    <h2>Введите имя пользователя:</h2>
+    <input type="text" id="username" placeholder="Введите имя">
+    <script src="dz_10.js"></script>
+</body>
+
+</html>
