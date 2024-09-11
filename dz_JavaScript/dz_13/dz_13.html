@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Вспомогательная функция для загрузки изображения
+        function loadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = document.createElement('img');
+                img.src = src;
+
+                img.onload = () => resolve(img);
+                img.onerror = () => reject(img);
+            });
+        }
+
+        // Функция загрузки цепочки изображений
+        function loadImgChain(src, okSrc, errorSrc) {
+            const span = document.createElement('span');
+            document.body.appendChild(span);
+
+            const img1 = document.createElement('img');
+            img1.src = src;
+            document.body.appendChild(img1);
+
+            loadImage(src)
+                .then(() => loadImage(okSrc))
+                .then(img => {
+                    document.body.appendChild(img);
+                    span.textContent = `indicator ok`;
+                })
+                .catch(() => loadImage(errorSrc))
+                .then(img => {
+                    document.body.appendChild(img);
+                    span.textContent = `indicator error`;
+                })
+                .catch(error => {
+                    span.textContent = `indicator error`;
+                });
+        }
+
+        // Тестовые данные
+        cat = 'https://www.svgimages.com/svg-image/s10/cute-cat-clip-art-256x256.png',
+            ok = 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/274/thumbs-up_1f44d.png',
+            bad = 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/274/thumbs-down_1f44e.png';
+
+        // Тестовые вызовы
+        function test(m) {
+            document.body.innerHTML = '';
+            console.log('test ', m);
+            switch (m) {
+                case 0: loadImgChain(cat, ok, bad); return;  // [😺] [👍] indicator ok
+                case 1: loadImgChain(cat, '-', bad); return; // [😺] [x] indicator error
+                case 2: loadImgChain('-', ok, bad); return;  // [x] [👎] indicator ok
+                case 3: loadImgChain('-', ok, '-'); return;  // [x] [x] indicator error
+            }
+        }
+
+        function testTask(i) {
+            test(i);
+            if (++i < 4) {
+                document.addEventListener('click', _ => testTask(i), { once: true });
+            }
+        }
+        testTask(0);
+    </script>
+    <script src="dz_13.js"></script>
+</body>
+
+</html>
