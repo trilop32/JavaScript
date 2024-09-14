@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>    
+    <link rel="stylesheet" href="dz_14.css">
+</head>
+
+<body>
+    <table id="Table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Город</th>
+                <th>Гео</th>
+                <th>Телефон</th>
+                <th>Сайт</th>
+                <th>Название компании</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        const tableBody = document.querySelector('#Table tbody');
+
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(users => {
+                users.forEach(user => {
+                    const row = tableBody.insertRow();
+                    row.insertCell().textContent = user.id;
+                    row.insertCell().textContent = user.name;
+                    row.insertCell().textContent = user.username;
+                    row.insertCell().textContent = user.email;
+                    row.insertCell().textContent = user.address.city;
+                    let geo = `<div class="geo">Lat: ${user.address.geo.lat}
+    Lng: ${user.address.geo.lng}</div>`;
+                    row.insertCell().innerHTML = geo;
+                    row.insertCell().textContent = user.phone;
+                    row.insertCell().textContent = user.website;
+                    row.insertCell().textContent = user.company.name;
+                });
+            })
+            .catch(error => {
+                console.error('Ошибка при загрузке данных:', error);
+            });
+    </script>
+    <script src="dz_14.js"></script>
+</body>
+
+</html>
