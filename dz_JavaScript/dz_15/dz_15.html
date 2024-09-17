@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="buttons"></div>
+    <div id="userinfo"></div>
+    <div id="userposts"></div>
+    <script>
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(response => response.json())
+            .then(users => {
+                const Buttons = document.getElementById('buttons');
+                users.slice(0, 10).forEach((user, index) => {
+                    const button = document.createElement('button');
+                    button.textContent = `Пользователь ${user.id}`;
+                    button.addEventListener('click', () => {
+                        UserInfo(user.id);
+                    });
+                    Buttons.appendChild(button);
+                });
+            });
+        function UserInfo(userId) {
+            const UserInfo = document.getElementById('userinfo');
+            UserInfo.innerHTML = '';
+            fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+                .then(response => response.json())
+                .then(user => {
+                    const userContent = `
+              <h2>${user.name}</h2>
+              <p>Email: ${user.email}</p>
+              <p>Адрес: ${user.address.street}, ${user.address.city}, ${user.address.zipcode}</p>
+              <p>Телефон: ${user.phone}</p>`;
+                    UserInfo.innerHTML = userContent;
+                    const postsButton = document.createElement('button');
+                    postsButton.textContent = 'Отобразить посты пользователя';
+                    postsButton.addEventListener('click', () => {
+                        UserPosts(userId);
+                    });
+                    UserInfo.appendChild(postsButton);
+                });
+        }
+        function UserPosts(userId) {
+            const userPosts = document.getElementById('userposts');
+            userPosts.innerHTML = '';
+            fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+                .then(response => response.json())
+                .then(posts => {
+                    posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>`;
+                        userPosts.appendChild(postElement);
+                    });
+                });
+        }
+    </script>
+    <script src="dz_15.js"></script>
+</body>
+
+</html>
