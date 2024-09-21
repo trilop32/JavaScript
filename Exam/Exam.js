@@ -3,6 +3,7 @@ const moviesContainer = document.getElementById('movies-container');
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const searchButton2 = document.getElementById('search-button2');
+const searchButton3 = document.getElementById('search-button3');
 const movieModal = document.getElementById('movie-modal');
 const closeButton = document.querySelector('.close-button');
 const movieTitle = document.getElementById('movie-title');
@@ -13,7 +14,7 @@ const movieGenre = document.getElementById('movie-genre');
 const moviePlot = document.getElementById('movie-plot');
 let currentPage = 1;
 searchButton.addEventListener('click', searchMovies);
-searchButton2.addEventListener('click', searchMovies);
+searchButton2.addEventListener('click', searchMovies2);
 closeButton.addEventListener('click', closeModal);
 function searchMovies() {
     const searchTerm = searchInput.value;
@@ -32,6 +33,30 @@ function searchMovies() {
                 searchButton2.style.display = 'none';
                 alert('Фильм не найден.');
 
+            }
+        })
+        .catch(error => console.error('Ошибка:', error));
+}
+function searchMovies2() {
+    const searchTerm = searchInput.value;
+    if (searchTerm.trim() === '') {
+        return;
+    }
+    fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}&page=${currentPage}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.Response === 'True') {
+                displayMovies(data.Search);
+                if (data.totalResults > 10 && data.Search.length === 10) {
+                    currentPage--;
+                    if(currentPage<=0)
+                    {
+                        currentPage=1;
+                    }
+                }
+            } else {
+                searchButton2.style.display = 'none';
+                alert('Фильм не найден.');
             }
         })
         .catch(error => console.error('Ошибка:', error));
@@ -62,7 +87,6 @@ searchInput.addEventListener('input', () => {
         if (searchInput.value.trim() != '') {
             searchButton.textContent = 'Далее';
             searchButton2.style.display = 'block';
-            searchButton2.textContent = 'Далее';
         }
     });
 });
